@@ -14,7 +14,7 @@ class Student < ActiveRecord::Base
 
   def age
 	now = Date.today
-	age = now.year - self.birthday.year - ((now.month > self.birthday.month || (now.month == self.birthday.month && now.day >= self.birthday.day))? 0:1)
+	age = now.year - self.birthday.year - 1
   end
 
   def phone_validation?
