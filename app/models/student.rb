@@ -2,6 +2,9 @@ require_relative '../../db/config'
 
 class Student < ActiveRecord::Base
 # implement your Student model here
+  has_many :students_teachers, :foreign_key => :student_id
+  has_many :teachers, through: :students_teachers
+
   validates :email, uniqueness: true, format: { with: /\A\w+@\w+(.\w+)*(\.\w{2,})\z/ }
   validates :age, numericality: { greater_than: 4}
   validate :phone_validation?
